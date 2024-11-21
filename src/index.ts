@@ -11,9 +11,9 @@ export function recursiveSet(ref: Obj, keys: Keys, value: any) {
   if (keys.length > 1) {
     const nextKey = keys[1];
 
-    if (typeof nextKey === "number" && !Array.isArray(ref[key])) {
+    if (typeof nextKey === 'number' && !Array.isArray(ref[key])) {
       ref[key] = new Array();
-    } else if (typeof nextKey === "string" && !isObject(ref[key])) {
+    } else if (typeof nextKey === 'string' && !isObject(ref[key])) {
       ref[key] = {};
     }
     const newKeys = keys.slice(1);
@@ -24,30 +24,30 @@ export function recursiveSet(ref: Obj, keys: Keys, value: any) {
 }
 
 function isObject(x: any) {
-  return typeof x === "object" && !Array.isArray(x) && x !== null;
+  return typeof x === 'object' && !Array.isArray(x) && x !== null;
 }
 
 // Function to set a value in jsonData, creating nested objects/arrays as needed
 function getPathKeys(path: string): Keys {
   const keys: Keys = [];
-  let currentKey = "";
+  let currentKey = '';
 
   // Parse path to separate keys and indices
   for (let i = 0; i < path.length; i++) {
     const char = path[i];
-    if (char === ".") {
+    if (char === '.') {
       if (currentKey) {
         keys.push(currentKey);
-        currentKey = "";
+        currentKey = '';
       }
-    } else if (char === "[") {
+    } else if (char === '[') {
       if (currentKey) {
         keys.push(currentKey);
-        currentKey = "";
+        currentKey = '';
       }
       let j = i + 1;
-      let index = "";
-      while (path[j] !== "]" && j < path.length) {
+      let index = '';
+      while (path[j] !== ']' && j < path.length) {
         index += path[j];
         j++;
       }
