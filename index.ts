@@ -1,15 +1,12 @@
-const jsonData = {};
-
 type Keys = (string | number)[];
-function setJsonMapFromPath(path: string, value: any) {
-  const keys = getPathKeys(path);
-  // console.log(keys);
+type Obj = Record<string | symbol | number, any>;
 
-  populateJsonData(keys, value);
+export function setOnPath(obj: Obj, path: string, value: any) {
+  const keys = getPathKeys(path);
+  recursiveSet(obj, keys, value);
 }
 
-function populateJsonData(keys: Keys, value: any, ref: any = jsonData) {
-  console.log(keys);
+export function recursiveSet(ref: Obj, keys: Keys, value: any) {
   const key = keys[0];
   if (keys.length > 1) {
     const nextKey = keys[1];
@@ -20,7 +17,7 @@ function populateJsonData(keys: Keys, value: any, ref: any = jsonData) {
       ref[key] = {};
     }
     const newKeys = keys.slice(1);
-    populateJsonData(newKeys, value, ref[key]);
+    recursiveSet(ref[key], newKeys, value);
   } else {
     ref[key] = value;
   }
@@ -63,8 +60,3 @@ function getPathKeys(path: string): Keys {
   if (currentKey) keys.push(currentKey);
   return keys;
 }
-
-// Examples
-setJsonMapFromPath("nest[0].t[0]", "bar");
-setJsonMapFromPath("nest[1].t[0]", "bar");
-console.log("jsonData: ", jsonData);
