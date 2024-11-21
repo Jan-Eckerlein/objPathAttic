@@ -1,0 +1,7 @@
+src/
+node_modules/
+.eslintrc.js
+.prettierrc
+*.log
+*.md~
+dist/*.map
