@@ -1,21 +1,52 @@
 {
   "name": "obj-path-attic",
   "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
+  "description": "Utility package for handling deeply nested object paths.",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "npx eslint src/**"
+    "lint": "npx eslint src/**",
+    "format": "npx prettier . --write",
+    "build": "tsc",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "object-path",
+    "nested-data",
+    "utility",
+    "javascript",
+    "typescript"
+  ],
+  "author": "Your Name <your.email@example.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/obj-path-attic.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/obj-path-attic/issues"
+  },
+  "homepage": "https://github.com/your-username/obj-path-attic#readme",
   "devDependencies": {
     "@eslint/js": "^9.15.0",
+    "@typescript-eslint/eslint-plugin": "^6.8.0",
+    "@typescript-eslint/parser": "^6.8.0",
     "eslint": "^9.15.0",
     "eslint-config-prettier": "^9.1.0",
     "globals": "^15.12.0",
     "prettier": "3.3.3",
-    "typescript-eslint": "^8.15.0"
+    "typescript": "^5.6.3"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
