@@ -14,6 +14,13 @@
     "prepublishOnly": "npm test && npm run lint"
   },
   "keywords": [
+    "path",
+    "obj",
+    "object",
+    "nested",
+    "prop",
+    "dot notation",
+    "dot",
     "object-path",
     "nested-data",
     "utility",
