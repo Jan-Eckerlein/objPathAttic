@@ -2,14 +2,22 @@
   "name": "obj-path-attic",
   "version": "0.0.1",
   "description": "Utility package for handling deeply nested object paths.",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/cjs/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js"
+    }
+  },
   "scripts": {
+    "build:cjs": "tsc --project tsconfig.cjs.json",
+    "build:esm": "tsc --project tsconfig.esm.json",
+    "build": "npm run build:cjs && npm run build:esm",
     "test": "vitest",
     "lint": "npx eslint src/**",
     "format": "npx prettier . --write",
-    "build": "tsc",
     "prepare": "npm run build",
     "prepublishOnly": "npm test && npm run lint"
   },
