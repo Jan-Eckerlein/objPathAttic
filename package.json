@@ -1,6 +1,6 @@
 {
   "name": "obj-path-attic",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Utility package for handling deeply nested object paths.",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
